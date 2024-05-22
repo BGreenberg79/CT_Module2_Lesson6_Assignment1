@@ -76,7 +76,8 @@ print(negative_word_tally(python_reviews))
 
 def review_summary(python_reviews):
     review_summaries = []
-    for review in python_reviews:
-        review_summaries.append(review[0:30]) + "..."
-    print(review_summaries)
+    for review in python_reviews:   
+        review_summaries.append(review[0:30]+ "...")  
+    print("A summary of the reviews:")
+    print(*review_summaries, sep='\n')
 review_summary(python_reviews)
