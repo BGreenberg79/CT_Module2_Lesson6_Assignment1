@@ -71,3 +71,12 @@ def negative_word_tally(reviews_to_tally):
     
 print(positive_word_tally(python_reviews))
 print(negative_word_tally(python_reviews))
+
+#Task 3 30 character summary
+
+def review_summary(python_reviews):
+    review_summaries = []
+    for review in python_reviews:
+        review_summaries.append(review[0:30]) + "..."
+    print(review_summaries)
+review_summary(python_reviews)
