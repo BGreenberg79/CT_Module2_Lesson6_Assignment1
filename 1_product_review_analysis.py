@@ -73,11 +73,35 @@ print(positive_word_tally(python_reviews))
 print(negative_word_tally(python_reviews))
 
 #Task 3 30 character summary
+#Implement a script that takes the first 30 characters of a review 
+#and appends "…" to create a summary. Ensure that the summary does not cut off in the
+# middle of a word.
 
 def review_summary(python_reviews):
     review_summaries = []
-    for review in python_reviews:   
-        review_summaries.append(review[0:30]+ "...")  
+    for review in python_reviews:
+        if len(review) > 30:
+            last_space = review[:30].rfind(' ')
+            if last_space == -1:
+                summary = review[:30] + "..."
+            else:
+                summary = review[:last_space] + "..."
+        else: 
+            summary = review
+        review_summaries.append(summary)
     print("A summary of the reviews:")
     print(*review_summaries, sep='\n')
 review_summary(python_reviews)
+
+'''
+In line 80 I set up and defined a function to summarize the reviews in approximately 30 characters, without cutting words off.
+Line 81 set up an empty list we will append the summaries too. Line 82 created a for loop that starst the program by
+looping through each review in any set we feed to the function. Line 83, 89, and 90 tests 
+if the review is over 30 characters and if it is not, assigns it to a summary variable is looped into a list, after a "..." is concantenated.
+Line 84 assigns an integer to the variable last_space that says where the last " " is in the first 30 characters of each review
+Line 85-86 is a nested if/else where the first 30 characters and the ellipses are also assigned to summary if there aren't any " " for whatever reaon found.
+Line 87-88 assigns reviews sliced up until the integer value returned in last_space where the last " " will be found to the summary list that is being created by the loop and adds
+the ellipses. By line 91 all 5 reviews have been concantenated with an ellipses and summarized and are appended to the empty list we created at the start
+of the function. In line 92 and 93 we format the printing of this list to give a small introduction, remove the brackets and populate each list into its own terminal line.
+In line 94 I call the function with our reviews.
+'''
